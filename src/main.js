@@ -34,16 +34,13 @@ window.addEventListener('resize', debounce( event => {
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 
-// objects
+// Cube
 const geometry = new BoxGeometry(1,1,1)
 const material = new MeshStandardMaterial({ color: 0x049ef4 })
 const mesh = new Mesh(geometry, material)
 scene.add(mesh)
 
-// objects GUI controls
-const cubeGui = gui.addFolder('Cube')
-const fullCircleInRadians = 360 * Math.PI / 180
-cubeGui.add(mesh.rotation, 'y', 0, fullCircleInRadians, 0.1)
+// Cube GUI controls
 const materialGui = gui.addFolder('Cube Material')
 materialGui.addColor({ color: material.color.getHex() }, 'color').onChange( color => material.color = new Color(color) )
 materialGui.add( material, 'metalness', 0, 1, 0.1 )
